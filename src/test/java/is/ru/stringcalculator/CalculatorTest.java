@@ -28,4 +28,9 @@ public class CalculatorTest{
 	public void stringMultipleItem(){
 		assertEquals(6, Calculator.add("1,2,3"));
 	}
+
+	@Test
+	public void stringNewLineItem(){
+		assertEquals(6, Calculator.add("1,2\n3"));
+	}
 }

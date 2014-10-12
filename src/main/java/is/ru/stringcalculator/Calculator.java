@@ -6,7 +6,7 @@ public class Calculator{
 		if(text.equals("")){
 			return 0;
 		}
-		else if(text.contains(",")){		
+		else if(text.contains(",") || text.contains("\n")){		
 			return sum(arrNumbers(text));
 		}
 		else{
@@ -15,7 +15,7 @@ public class Calculator{
 	}
 	
 	private static String[] arrNumbers(String text){
-		return text.split(",");
+		return text.split(",|\n");
 	}
 
 	private static int sum(String[] arrNumbers){
