@@ -7,11 +7,11 @@ public class CalculatorTest{
 
 	public static void main(String args[]){
 		
-		org.junit.runner.JunitCore.main("is.ru.stringcalculator.CalculatorTest");
+		org.junit.runner.JUnitCore.main("is.ru.stringcalculator.CalculatorTest");
 	}
 
-	/*@Test
+	@Test
 	public void test(){
 		assertEquals(0, Calculator.add(""));
-	}*/
+	}
 }
