@@ -11,7 +11,12 @@ public class CalculatorTest{
 	}
 
 	@Test
-	public void test(){
+	public void emptyString(){
 		assertEquals(0, Calculator.add(""));
+	}
+	
+	@Test
+	public void stringOneItem(){
+		assertEquals(1, Calculator.add("1"));
 	}
 }
