@@ -1,26 +1,54 @@
 package is.ru.stringcalculator;
 
-public class Calculator{
-
+public class Calculator {
 	public static int add(String text){
+		String delimiter = ",|\n";
 		if(text.equals("")){
 			return 0;
 		}
-		//else if(text.contains("//")){
-//
-//		}
-		//else{
-			else if(text.contains(",") || text.contains("\n")){		
-				return sum(arrNumbers(text));
+		else if(text.startsWith("//")){
+			//Finding the indexof delimiter
+			int delimiterIndex = text.indexOf("//") + 2;
+			//Adding the new delimiter to the orginal one
+			delimiter = delimiter + "|" + text.substring(delimiterIndex, delimiterIndex + 1);
+			String numbersWithoutDelimiter = text.substring((delimiterIndex + 2));
+			/*if(numbersWithoutDelimiter.startsWith("\n")){
+				numbersWithoutDelimiter = numbersWithoutDelimiter.substring(1);
+			}
+			else{
+				numbersWithoutDelimiter = numbersWithoutDelimiter.substring(1);	
+			}*/
+
+			System.out.println("\n delimiter: " + delimiter);
+			System.out.println("\n numbersWithoutDelimiter: " + numbersWithoutDelimiter);
+
+			return add(numbersWithoutDelimiter, delimiter);
+		}
+		else{
+			if(text.contains(",") || text.contains("\n")){		
+				return sum(arrNumbers(text, delimiter));
 			}
 			else{
 				return toInt(text);
 			}
-		//}
+		}
 	}
+
 	
-	private static String[] arrNumbers(String text){
-		return text.split(",|\n");
+	private static int add(String text, String delimiter){
+			if(text.contains(",") || text.contains("\n") || text.contains(delimiter)){		
+				//System.out.println("\n Print NR#3 '" + delimiter + "'");
+				return sum(arrNumbers(text, delimiter));
+				//return sum(arrNumbers(text));
+			}
+			else{
+				return toInt(text);
+			}
+	}
+
+	private static String[] arrNumbers(String text, String delimiter){
+		return text.split(delimiter);
+		//return text.split(",|\n|");
 	}
 
 	private static int sum(String[] arrNumbers){

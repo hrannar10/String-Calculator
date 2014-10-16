@@ -37,4 +37,8 @@ public class CalculatorTest{
 	public void stringNewLineItem(){
 		assertEquals(1+2+3, Calculator.add("1,2\n3"));
 	}
+	@Test
+	public void stringStartsWith(){
+		assertEquals(3+4+6+15, Calculator.add("//;\n3,4;6;15"));
+	}
 }
