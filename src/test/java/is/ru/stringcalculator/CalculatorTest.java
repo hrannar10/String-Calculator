@@ -26,11 +26,11 @@ public class CalculatorTest{
 
 	@Test
 	public void stringMultipleItem(){
-		assertEquals(1+2+3, Calculator.add("1,2,3"));
+		assertEquals(1+2+3, Calculator.add(";1,2,3"));
 	}
 	@Test
 	public void stringMultipleItem2(){
-		assertEquals(6+7+45+99, Calculator.add("6,7,45,99"));
+		assertEquals(6+7+45+99, Calculator.add("\n6,7,45,99"));
 	}
 
 	@Test
@@ -38,7 +38,11 @@ public class CalculatorTest{
 		assertEquals(1+2+3, Calculator.add("1,2\n3"));
 	}
 	@Test
-	public void stringStartsWith(){
+	public void stringStartsWithN(){
 		assertEquals(3+4+6+15, Calculator.add("//;\n3,4;6;15"));
+	}
+	@Test
+	public void stringStartsWithSemiComa(){
+		assertEquals(3+4+6+15, Calculator.add("//;;3,4;6;15"));
 	}
 }
