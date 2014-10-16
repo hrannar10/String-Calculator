@@ -21,16 +21,20 @@ public class CalculatorTest{
 
 	@Test
 	public void stringTwoItem(){
-		assertEquals(3, Calculator.add("1,2"));
+		assertEquals(1+2, Calculator.add("1,2"));
 	}
 
 	@Test
 	public void stringMultipleItem(){
-		assertEquals(6, Calculator.add("1,2,3"));
+		assertEquals(1+2+3, Calculator.add("1,2,3"));
+	}
+	@Test
+	public void stringMultipleItem2(){
+		assertEquals(6+7+45+99, Calculator.add("6,7,45,99"));
 	}
 
 	@Test
 	public void stringNewLineItem(){
-		assertEquals(6, Calculator.add("1,2\n3"));
+		assertEquals(1+2+3, Calculator.add("1,2\n3"));
 	}
 }
