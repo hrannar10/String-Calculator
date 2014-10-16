@@ -1,0 +1,12 @@
+﻿Classes fixed and CalcTest
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   classes/is/ru/stringcalculator/Calculator.class
+#	modified:   classes/is/ru/stringcalculator/CalculatorTest.class
+#	modified:   src/test/java/is/ru/stringcalculator/CalculatorTest.java
+#
+
