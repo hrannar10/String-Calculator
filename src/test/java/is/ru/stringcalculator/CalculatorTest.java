@@ -28,6 +28,7 @@ public class CalculatorTest{
 	public void stringMultipleItem(){
 		assertEquals(1+2+3, Calculator.add(";1,2,3"));
 	}
+
 	@Test
 	public void stringMultipleItem2(){
 		assertEquals(6+7+45+99, Calculator.add("\n6,7,45,99"));
@@ -37,12 +38,20 @@ public class CalculatorTest{
 	public void stringNewLineItem(){
 		assertEquals(1+2+3, Calculator.add("1,2\n3"));
 	}
+
 	@Test
 	public void stringStartsWithN(){
 		assertEquals(3+4+6+15, Calculator.add("//;\n3,4;6;15"));
 	}
+
 	@Test
 	public void stringStartsWithSemiComa(){
-		assertEquals(3+4+6+15, Calculator.add("//;;3,4;6;15"));
+		assertEquals(3+4+6+15, Calculator.add("//;;3,4;6,15"));
 	}
+
+	@Test
+	public void stringWithBiggerNumberThen1000(){
+		assertEquals(0+2, Calculator.add("1001,2"));
+	}
+
 }

@@ -24,23 +24,19 @@ public class Calculator {
 	}
 
 	private static int add(String text, String delimiter){
-			if(text.contains(",") || text.contains("\n") || text.contains(delimiter)){
-				return sum(arrNumbers(text, delimiter));
-			}
-			else{
-				return toInt(text);
-			}
-	}
-
-	private static String[] arrNumbers(String text, String delimiter){
-		return text.split(delimiter);
+		return sum(text.split(delimiter));
 	}
 
 	private static int sum(String[] arrNumbers){
-
 		int theSum = 0;			
 			for(int i = 0; i < arrNumbers.length; i++){
-				theSum += toInt(arrNumbers[i]);
+				if(toInt(arrNumbers[i]) > 1000){
+					theSum += 0;
+				}
+				else{
+					theSum += toInt(arrNumbers[i]);	
+				}
+				
 			}
 		return theSum;
 	}
