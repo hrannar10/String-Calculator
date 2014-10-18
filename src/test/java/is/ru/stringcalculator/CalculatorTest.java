@@ -1,9 +1,10 @@
 package is.ru.stringcalculator;
 
-import junit.framework.Assert;
-//import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import org.junit.Test;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
+import java.util.regex.Pattern;
 
 public class CalculatorTest{
 
@@ -28,7 +29,7 @@ public class CalculatorTest{
 
 	@Test
 	public void stringMultipleItem(){
-		assertEquals(1+2+3, Calculator.add(";1,2,3"));
+		assertEquals(1+2+3, Calculator.add("1,2,3"));
 	}
 
 	@Test
@@ -56,15 +57,12 @@ public class CalculatorTest{
 		assertEquals(0+2, Calculator.add("1001,2"));
 	}
 
-	@Test
-	public final void NegativesNumberRejected() {
-		RuntimeException exception = null;
-		try {
-			Calculator.add("3,-6,15,-18,46,33");
-		} catch (RuntimeException e) {
-			exception = e;
-		}
-		Assert.assertNotNull(exception);
-		Assert.assertEquals("Negatives not allowed: [-6, -18]", exception.getMessage());
+	@Test(expected=RuntimeException.class)
+	public void Nonegatives()throws RuntimeException {
+		Calculator.add("1,2,3,-9");
+	}
+	@Test(expected=RuntimeException.class)
+	public void NegativesAndDelimiters(){
+		Calculator.add(Pattern.quote("//[***]\n1***-2***3"));
 	}
 }
