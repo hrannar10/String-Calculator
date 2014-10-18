@@ -1,5 +1,6 @@
 package is.ru.stringcalculator;
 
+import junit.framework.Assert;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
@@ -54,4 +55,21 @@ public class CalculatorTest{
 		assertEquals(0+2, Calculator.add("1001,2"));
 	}
 
+	@Test(expected = RuntimeException.class)
+	public final void whenNegativeNumberIsUsedThenRuntimeExceptionIsThrown() {
+		Calculator.add("3,-6,15,18,46,33");
+	}
+
+	@Test
+	public final void whenNegativeNumbersAreUsedThenRuntimeExceptionIsThrown() {
+		RuntimeException exception = null;
+		try {
+			Calculator.add("3,-6,15,-18,46,33");
+		} 
+		catch (RuntimeException e) {
+			exception = e;
+		}
+		Assert.assertNotNull(exception);
+		Assert.assertEquals("Negatives not allowed: [-6, -18]", exception.getMessage());
+	}
 }
